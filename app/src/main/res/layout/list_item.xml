@@ -6,6 +6,7 @@
     android:layout_margin="8dp"
     android:background="#FFFFFF"
     app:cardCornerRadius="8dp"
+    app:cardElevation="4dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -14,45 +15,156 @@
         android:orientation="vertical"
         android:layout_margin="4dp"
         android:background="#E4D1FB"
-        android:padding="4dp">
+        android:padding="16dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/text_view_border">
 
-        <TextView
-            android:id="@+id/systolic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/diastolic"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/heartRate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/Date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/Time"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/systoliclabel"
+                android:layout_width="176dp"
+                android:layout_height="match_parent"
+                android:fontFamily="sans-serif-medium"
+                android:text="Systolic level:"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic" />
+            <TextView
+                android:id="@+id/systolic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
 
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/text_view_border">
+            <TextView
+                android:id="@+id/diastoliclabel"
+                android:layout_height="wrap_content"
+                android:layout_width="176dp"
+                android:text="Diastolic level:"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
+            <TextView
+                android:id="@+id/diastolic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/text_view_border">
+            <TextView
+                android:id="@+id/heartRatelabel"
+                android:layout_height="wrap_content"
+                android:layout_width="176dp"
+                android:text="Heart Rate :"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
+            <TextView
+                android:id="@+id/heartRate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/text_view_border">
+            <TextView
+                android:id="@+id/Datelabel"
+                android:layout_height="wrap_content"
+                android:layout_width="176dp"
+                android:text="Date :"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
+            <TextView
+                android:id="@+id/Date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/text_view_border">
+            <TextView
+                android:id="@+id/Timelabel"
+                android:layout_height="wrap_content"
+                android:layout_width="176dp"
+                android:text="Time :"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
+            <TextView
+                android:id="@+id/Time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/text_view_border">
+
+            <TextView
+                android:id="@+id/commentlabel"
+                android:layout_height="wrap_content"
+                android:layout_width="176dp"
+                android:text="Comment :"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
+            <TextView
+                android:id="@+id/comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
         <Button
             android:id="@+id/edit"
             android:layout_width="100dp"
+            android:backgroundTint="@color/teal_200"
             android:layout_height="40dp"
             android:text="Update" />
 
         <Button
-            android:layout_width="100dp"
-            android:layout_height="40dp"
             android:id="@+id/delete"
-            android:text="Delete"
-            />
+            android:layout_width="100dp"
+            android:backgroundTint="@color/black"
+            android:layout_height="40dp"
+            android:text="Delete" />
+    </LinearLayout>
 
     </LinearLayout>
 

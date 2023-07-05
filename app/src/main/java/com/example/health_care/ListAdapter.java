@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +26,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private final Context context;
     private List<Store> st= new ArrayList<>();
 
-    public ListAdapter(Context context, List<Store> st){
+
+    public ListAdapter(Context context){
         this.context=context;
-        this.st = st;
+
     }
     @SuppressLint("NotifyDataSetChanged")
-    public void replaceData(List<Store> allData){
-        this.st=allData;
+    public void replaceData(List<Store> st){
+        this.st=st;
         notifyDataSetChanged();
     }
 
@@ -111,12 +113,11 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context,Storing.class);
-               // intent.putExtra("store", st.get(holder.getAdapterPosition()));
-                //intent.putExtra("data",stt.get(holder.getAdapterPosition()));
+                intent.putExtra("store", st.get(holder.getAdapterPosition()));
                 context.startActivity(intent);
-
             }
         });
+
 
         holder.buttonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -149,17 +150,17 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-             //heartRateLabel = itemView.findViewById(R.id.heartRateLabel);
+             heartRateLabel = itemView.findViewById(R.id.heartRatelabel);
              heartRate = itemView.findViewById(R.id.heartRate);
-             //systolicLabel = itemView.findViewById(R.id.systolicLabel);
+             systolicLabel = itemView.findViewById(R.id.systoliclabel);
              systolic = itemView.findViewById(R.id.systolic);
-             //diastolicLabel = itemView.findViewById(R.id.diastolicLabel);
+             diastolicLabel = itemView.findViewById(R.id.diastoliclabel);
              diastolic = itemView.findViewById(R.id.diastolic);
-            // dateLabel = itemView.findViewById(R.id.dateLabel);
+             dateLabel = itemView.findViewById(R.id.Datelabel);
              date = itemView.findViewById(R.id.Date);
-             //timeLabel = itemView.findViewById(R.id.timeLabel);
+             timeLabel = itemView.findViewById(R.id.Timelabel);
              time = itemView.findViewById(R.id.Time);
-             //commentLabel = itemView.findViewById(R.id.commentLabel);
+             commentLabel = itemView.findViewById(R.id.commentlabel);
              comment = itemView.findViewById(R.id.comment);
              buttonEdit=itemView.findViewById(R.id.edit);
              buttonDelete=itemView.findViewById(R.id.delete);

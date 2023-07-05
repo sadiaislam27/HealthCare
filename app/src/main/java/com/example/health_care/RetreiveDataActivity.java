@@ -40,7 +40,7 @@ public class RetreiveDataActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retreive_data);
-        adapter = new ListAdapter(RetreiveDataActivity.this,st);
+        adapter = new ListAdapter(RetreiveDataActivity.this);
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(adapter);
 
@@ -72,6 +72,9 @@ public class RetreiveDataActivity extends AppCompatActivity {
                 for(DataSnapshot ds : snapshot.getChildren()){
                     try{
                         Store data = ds.getValue(Store.class);
+                        String key = ds.getKey();
+                        if(data == null) continue;
+                        data.setKey(key);
                         allData.add(data);
                     }catch (Exception e){
                         e.printStackTrace();

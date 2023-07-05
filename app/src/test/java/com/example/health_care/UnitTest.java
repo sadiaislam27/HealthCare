@@ -7,7 +7,7 @@ import org.junit.Test;
 
 public class UnitTest {
 
-    @Test
+   @Test
     public void testGetUserInfo(){
         Users users = new Users("Sadia","49","23","sadia@gmail.com","123456");
         assertEquals("Sadia",users.getName());
@@ -20,4 +20,6 @@ public class UnitTest {
         Store store=new Store("45","34","25","5738","65","bad");
         assertEquals("45",store.getHeartRate());
     }
+
+
 }
