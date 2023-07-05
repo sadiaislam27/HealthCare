@@ -3,14 +3,22 @@ package com.example.health_care;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Adapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -19,69 +27,65 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.health_care.ListAdapter;
 
 public class RetreiveDataActivity extends AppCompatActivity {
 
-    ListView myListview;
-    List<Store> usersList;
-    Button add;
-    DatabaseReference usersDbRef;
-    String userEmail;
-    Intent intent = getIntent();
+    private ListAdapter adapter ;
+    private List<Store> st=new ArrayList<>();
 
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_retreive_data);
-        Intent intent = getIntent();
-        if (intent != null) {
-            userEmail = intent.getStringExtra("userEmail");
-            if (userEmail != null) {
-                // Use the userEmail as needed
-            }
-        }
+        adapter = new ListAdapter(RetreiveDataActivity.this,st);
+        RecyclerView recyclerView = findViewById(R.id.recycler);
+        recyclerView.setAdapter(adapter);
 
-
-        myListview = findViewById(R.id.myListView);
-
-        usersList = new ArrayList<>();
-
-        usersDbRef = FirebaseDatabase.getInstance().getReference("store");
-
-        usersDbRef.orderByChild("email").equalTo(userEmail).addValueEventListener(new ValueEventListener() {
+        FloatingActionButton buttonAdd = findViewById(R.id.add);
+        buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                usersList.clear();
-
-                for (DataSnapshot userDatasnap : dataSnapshot.getChildren()) {
-                    Store user = userDatasnap.getValue(Store.class);
-                    usersList.add(user);
-                }
-
-                ListAdapter adapter = new ListAdapter(RetreiveDataActivity.this, usersList);
-                myListview.setAdapter(adapter);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Toast.makeText(RetreiveDataActivity.this, "Error retrieving data", Toast.LENGTH_SHORT).show();
+            public void onClick(View v) {
+                startActivity(new Intent(RetreiveDataActivity.this,Storing.class));
             }
         });
 
-        add = findViewById(R.id.add);
-
-
-        add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RetreiveDataActivity.this, Storing.class);
-                intent.putExtra("userEmail", userEmail); // Pass the userEmail as an extra
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(intent);
-            }
-        });
-
+        downloadData();
     }
+
+    private void downloadData(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if(user == null) return;
+        String uid = user.getUid();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("store").child(uid);
+        ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if(!snapshot.exists()){
+//                    Toast.makeText(HomeActivity.this, "No data found", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+                List<Store> allData = new ArrayList<>();
+
+                for(DataSnapshot ds : snapshot.getChildren()){
+                    try{
+                        Store data = ds.getValue(Store.class);
+                        allData.add(data);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+                adapter.replaceData(allData);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
 
 }
