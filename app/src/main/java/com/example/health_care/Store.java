@@ -1,6 +1,8 @@
 package com.example.health_care;
 
-public class Store {
+import java.io.Serializable;
+
+public class Store implements Serializable {
     private String heartRate;
     private String systolic;
     private String diastolic;

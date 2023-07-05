@@ -48,7 +48,9 @@ public class Storing extends AppCompatActivity {
         time=findViewById(R.id.time);
         comment=findViewById(R.id.comment);
 
-        Object obj = getIntent().getSerializableExtra("data");
+        Object obj = getIntent().getSerializableExtra("store");
+
+
         if(obj instanceof Store){
             passedData = (Store) obj;
             date.setText(passedData.getCurrentDate());
@@ -57,6 +59,7 @@ public class Storing extends AppCompatActivity {
             diastolic.setText(passedData.getDiastolic());
             heart.setText(passedData.getHeartRate());
             comment.setText(passedData.getComment());
+
         }
 
         savebutton.setOnClickListener(new View.OnClickListener() {
@@ -116,5 +119,7 @@ public class Storing extends AppCompatActivity {
             }
         });
 
+
+        //FirebaseAuth.getInstance().signOut();;
     }
 }
