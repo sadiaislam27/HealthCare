@@ -6,22 +6,29 @@ public class Store {
     private String diastolic;
     private String time;
     private String currentDate;
-    private String email;
-    private String comment;
+
+    private String comment,key;
 
     public Store() {
         // Empty constructor needed for Firebase
     }
 
-    public Store(String heartRate, String systolic, String diastolic, String time, String currentDate,String email,String comment) {
+    public Store(String heartRate, String systolic, String diastolic, String time, String currentDate,String comment) {
         this.heartRate = heartRate;
         this.systolic = systolic;
         this.diastolic = diastolic;
         this.time = time;
         this.currentDate = currentDate;
-        this.email = email;
+
         this.comment = comment;
 
+    }
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getHeartRate() {
@@ -64,13 +71,7 @@ public class Store {
         this.currentDate = currentDate;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public String getComment() {
         return comment;
@@ -79,5 +80,7 @@ public class Store {
     public void setComment(String comment) {
         this.comment = comment;
     }
+
+
 }
 
