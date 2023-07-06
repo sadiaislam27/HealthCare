@@ -7,6 +7,7 @@
     android:background="#FFFFFF"
     app:cardCornerRadius="8dp"
     app:cardElevation="4dp"
+    android:layout_marginTop="100dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -21,7 +22,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/text_view_border">
+            >
 
             <TextView
                 android:id="@+id/systoliclabel"
@@ -46,7 +47,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/text_view_border">
+            >
             <TextView
                 android:id="@+id/diastoliclabel"
                 android:layout_height="wrap_content"
@@ -58,7 +59,10 @@
             <TextView
                 android:id="@+id/diastolic"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
 
         </LinearLayout>
 
@@ -68,7 +72,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/text_view_border">
+            >
             <TextView
                 android:id="@+id/heartRatelabel"
                 android:layout_height="wrap_content"
@@ -80,7 +84,10 @@
             <TextView
                 android:id="@+id/heartRate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
 
         </LinearLayout>
         <LinearLayout
@@ -88,7 +95,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/text_view_border">
+            >
             <TextView
                 android:id="@+id/Datelabel"
                 android:layout_height="wrap_content"
@@ -100,7 +107,10 @@
             <TextView
                 android:id="@+id/Date"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
 
         </LinearLayout>
         <LinearLayout
@@ -108,7 +118,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/text_view_border">
+            >
             <TextView
                 android:id="@+id/Timelabel"
                 android:layout_height="wrap_content"
@@ -120,7 +130,10 @@
             <TextView
                 android:id="@+id/Time"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
 
         </LinearLayout>
 
@@ -129,7 +142,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_vertical"
-            android:background="@drawable/text_view_border">
+            >
 
             <TextView
                 android:id="@+id/commentlabel"
@@ -142,29 +155,49 @@
             <TextView
                 android:id="@+id/comment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textColor="#000000"
+                android:textStyle="bold|italic"/>
         </LinearLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical">
-        <Button
-            android:id="@+id/edit"
-            android:layout_width="100dp"
-            android:backgroundTint="@color/teal_200"
-            android:layout_height="40dp"
-            android:text="Update" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
 
-        <Button
-            android:id="@+id/delete"
-            android:layout_width="100dp"
-            android:backgroundTint="@color/black"
-            android:layout_height="40dp"
-            android:text="Delete" />
-    </LinearLayout>
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonDetails"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#00BA000D"
+                android:textColor="#14CAB9"
+                android:text="Details Record"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="70dp"
+                android:backgroundTint="#05D5EF"
+                android:text="Update"
+                android:textSize="10dp" />
+
+            <Button
+                android:id="@+id/delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="3dp"
+                android:backgroundTint="#0C0C0C"
+                android:text="Delete"
+                android:textSize="10dp" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

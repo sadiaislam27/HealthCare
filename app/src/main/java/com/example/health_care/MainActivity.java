@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
         new Handler().postDelayed(()-> {
 
-            Intent intent= new Intent(MainActivity.this,testreg.class);
+            Intent intent= new Intent(MainActivity.this,Login.class);
             startActivity(intent);
 
             finish();

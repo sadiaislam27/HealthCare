@@ -65,17 +65,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inputEmail" />
 
-
-        <Button
-            android:layout_width="364dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_margin="5dp"
-            android:background="@drawable/button_border"
-            android:elevation="0dp"
-            android:text="Forget Password?"
-            android:textColor="#000" />
-
         <Button
 
             android:id="@+id/btnLogin"
@@ -83,8 +72,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/button_border"
-            android:text="GO"
+            android:text="Log In"
             android:textColor="#fff" />
 
         <Button
