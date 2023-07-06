@@ -131,6 +131,20 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
                 catch (Exception ignored){}
             }
         });
+        holder.buttonDetails.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Store data = st.get(holder.getAdapterPosition());
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("systolic", data.getSystolic());
+                intent.putExtra("heartRate", data.getHeartRate());
+                intent.putExtra("diastolic", data.getDiastolic());
+                intent.putExtra("date", data.getCurrentDate());
+                intent.putExtra("time", data.getTime());
+                intent.putExtra("comment", data.getComment());
+                context.startActivity(intent);
+            }
+        });
 
 
     }
@@ -146,7 +160,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
         private TextView heartRateLabel,heartRate,systolicLabel,systolic,diastolicLabel,diastolic,dateLabel,date
                 ,timeLabel,time,commentLabel,comment;
 
-        private Button buttonEdit,buttonDelete;
+        private Button buttonEdit,buttonDelete,buttonDetails;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -164,6 +178,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
              comment = itemView.findViewById(R.id.comment);
              buttonEdit=itemView.findViewById(R.id.edit);
              buttonDelete=itemView.findViewById(R.id.delete);
+             buttonDetails=itemView.findViewById(R.id.buttonDetails);
 
 
         }

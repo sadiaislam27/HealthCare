@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.Button;
@@ -44,6 +45,15 @@ public class RetreiveDataActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.recycler);
         recyclerView.setAdapter(adapter);
 
+        Button btn= findViewById(R.id.logout);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth.getInstance().signOut();
+                startActivity(new Intent(RetreiveDataActivity.this, Login.class));
+            }
+        });
+
         FloatingActionButton buttonAdd = findViewById(R.id.add);
         buttonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,8 +63,12 @@ public class RetreiveDataActivity extends AppCompatActivity {
         });
 
         downloadData();
+
     }
 
+    /**
+     *
+     */
     private void downloadData(){
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if(user == null) return;
